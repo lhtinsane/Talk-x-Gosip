@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "13739425834",
+    "firebase_url": "https://talk-x-gosip.firebaseio.com",
+    "project_id": "talk-x-gosip",
+    "storage_bucket": "talk-x-gosip.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13739425834:android:d3b2dd51856b43e5",
+        "android_client_info": {
+          "package_name": "com.kamar18lt1.talkxgosip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13739425834-f8fn43clcbskpl7vqvaf9ed7dg8tbdnn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kamar18lt1.talkxgosip",
+            "certificate_hash": "177a31d522bd2d2fc26195000efdeff4fc2ad391"
+          }
+        },
+        {
+          "client_id": "13739425834-j686t1mtseego6b6jo1rb1k7f4ds9qjd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqZkVzQgdFRVzPfwpldXkNr4dCEhzUyzQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13739425834-j686t1mtseego6b6jo1rb1k7f4ds9qjd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
