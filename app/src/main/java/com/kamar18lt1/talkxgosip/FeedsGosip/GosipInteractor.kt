@@ -28,7 +28,7 @@ class GosipInteractor() :GosipContract.GosipInteractorInterface {
 
     //saving interactor
     override fun savePost(string: String, listener: GosipContract.GosipInteractorInterface.onGosipPostListener) {
-        db.collection("post").document().set(Post("xxx",string,0,0,0))
+        db.collection("pending_post").document().set(Post("xxx",string,0,0,0))
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
                         listener.onSucces()

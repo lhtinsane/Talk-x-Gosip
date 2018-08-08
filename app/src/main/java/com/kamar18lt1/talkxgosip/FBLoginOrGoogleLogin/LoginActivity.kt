@@ -115,9 +115,6 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
             }else
                 listener.onNotExist()
         }
-                .addOnFailureListener {
-                    listener.onNotExist()
-                }
     }
 
     override fun onExist(string: String) {

@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AlertDialog
 import android.view.Menu
 import android.view.MenuInflater
@@ -28,7 +29,21 @@ class GosipActivity : AppCompatActivity(),GosipContract.GosipViewInterface {
         dialog.requestWindowFeature(Window.getDefaultFeatures(this))
         dialog.setCancelable(true)
         dialog.setContentView(R.layout.post_dialog)
+        dialog.button_post.setOnClickListener {
+            if (dialog.edit_post.text.toString().isEmpty()){
+                dialog.edit_post.setError("Text tidak boleh kosong")
+            }else{
+                posting(dialog.edit_post.text.toString())
+                dialog.hide()
+            }
+        }
         dialog.show()
+    }
+
+    //posting function
+    fun posting(string: String){
+            presenter.postGosip(string)
+            Snackbar.make(gosipLayout,"Postingan anda sedang di verifikasi",Snackbar.LENGTH_SHORT)
     }
 
     override fun dialogPostError() {
