@@ -2,4 +2,6 @@
     <string name="app_name">Talk x Gosip</string>
     <string name="facebook_app_id">237880166934593</string>
     <string name="fb_login_protocol_scheme">fb237880166934593</string>
+    <string name="like">Like</string>
+    <string name="dislike">Dislike</string>
 </resources>

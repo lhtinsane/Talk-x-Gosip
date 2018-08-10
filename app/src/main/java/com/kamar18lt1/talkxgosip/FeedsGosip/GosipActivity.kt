@@ -5,25 +5,23 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AlertDialog
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.Window
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.kamar18lt1.talkxgosip.AdminPackage.AdminActivity
 import com.kamar18lt1.talkxgosip.FBLoginOrGoogleLogin.LoginActivity
 import com.kamar18lt1.talkxgosip.PreferenceHelper.PreferenceHelper
 import com.kamar18lt1.talkxgosip.R
 import kotlinx.android.synthetic.main.activity_gosip.*
 import kotlinx.android.synthetic.main.post_dialog.*
-import java.util.zip.Inflater
 
 class GosipActivity : AppCompatActivity(),GosipContract.GosipViewInterface {
     lateinit var mGoogleSignInClient : GoogleSignInClient
-    lateinit var presenter : GosipPresenter
     lateinit var preferenceHelper : PreferenceHelper
+    lateinit var presenter : GosipPresenter
     override fun showDialog() {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.getDefaultFeatures(this))
@@ -61,6 +59,8 @@ class GosipActivity : AppCompatActivity(),GosipContract.GosipViewInterface {
             preferenceHelper.destroyLogin()
             signOut()
             revokeAccess()
+        }else if (item.itemId == R.id.pending){
+            startActivity(Intent(this,AdminActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }

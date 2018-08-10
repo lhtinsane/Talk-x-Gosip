@@ -14,16 +14,20 @@ class GosipPresenter(var view: GosipActivity) : GosipContract.GosipPresenterInte
     //interactor for loading gossip
     override fun onLoadSucces(listPost: ArrayList<Post>): ArrayList<Post> {
         Log.e("bisa ga",listPost[0].nickname)
-        try {
-            view.recycler_view.setHasFixedSize(true)
-            val layoutManager = LinearLayoutManager(view)
-            view.recycler_view.layoutManager = layoutManager
-            var adapter = GosipAdapter(view,listPost)
-            view.recycler_view.adapter = adapter
-        }catch (e : Exception){
-            Log.e("error", e.printStackTrace().toString())
+        if (listPost.isEmpty()){
+
+        }else{
+            try {
+                view.recycler_view.setHasFixedSize(true)
+                val layoutManager = LinearLayoutManager(view)
+                view.recycler_view.layoutManager = layoutManager
+                var adapter = GosipAdapter(view,listPost)
+                view.recycler_view.adapter = adapter
+            }catch (e : Exception){
+                Log.e("error", e.printStackTrace().toString())
+            }
+            setRecyclerView(listPost)
         }
-        setRecyclerView(listPost)
         return listPost
     }
 

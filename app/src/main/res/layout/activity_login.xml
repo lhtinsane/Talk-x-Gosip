@@ -20,8 +20,8 @@
         android:id="@+id/facebookLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/text_loginwith"
+        android:layout_centerHorizontal="true"
         android:text="Login with Facebook"
         android:layout_marginStart="91dp" />
 

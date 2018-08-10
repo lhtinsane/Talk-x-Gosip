@@ -10,6 +10,7 @@ import com.kamar18lt1.talkxgosip.R
 import kotlinx.android.synthetic.main.list_item.view.*
 
 class GosipAdapter(val context: Context,val listGosip : ArrayList<Post>) : RecyclerView.Adapter<GosipAdapter.ViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item,parent,false))
     }
