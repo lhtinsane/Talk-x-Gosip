@@ -13,10 +13,13 @@ class GosipInteractor() :GosipContract.GosipInteractorInterface {
         var listPost =ArrayList<Post>()
 
         db.collection("post").get().addOnCompleteListener {
-            if (it.isSuccessful){
+            if (it.result.isEmpty){
+            }else{
                 for (documents in it.result){
-                    listPost.add(Post(documents["nickname"].toString(),documents["post"].toString(),documents["date"] as Long,
-                            documents["numLike"] as Long,documents["numDislike"] as Long))
+                    if (documents.exists()){
+                        listPost.add(Post(documents["nickname"].toString(),documents["post"].toString(),documents["date"] as Long,
+                                documents["numLike"] as Long,documents["numDislike"] as Long))
+                    }
                 }
                 listener.onLoadSucces(listPost)
             }

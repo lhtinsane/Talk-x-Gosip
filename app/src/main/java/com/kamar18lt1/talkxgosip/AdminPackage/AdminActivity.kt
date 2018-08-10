@@ -11,6 +11,5 @@ class AdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
         presenter.loadPendingPost()
-        
     }
 }

@@ -13,7 +13,6 @@ class GosipPresenter(var view: GosipActivity) : GosipContract.GosipPresenterInte
 
     //interactor for loading gossip
     override fun onLoadSucces(listPost: ArrayList<Post>): ArrayList<Post> {
-        Log.e("bisa ga",listPost[0].nickname)
         if (listPost.isEmpty()){
 
         }else{

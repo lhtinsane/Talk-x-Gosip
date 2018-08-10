@@ -3,6 +3,7 @@ package com.kamar18lt1.talkxgosip.AdminPackage
 import android.app.Activity
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
+import com.kamar18lt1.talkxgosip.FBLoginOrGoogleLogin.LoginActivity
 import com.kamar18lt1.talkxgosip.FeedsGosip.GosipActivity
 import com.kamar18lt1.talkxgosip.Model.PendingPost
 import kotlinx.android.synthetic.main.activity_admin.*
@@ -20,7 +21,11 @@ class AdminPresenter(var activity : Activity) : AdminContract.AdminPresenterInf 
         var interactor = AdminInteractor()
         interactor.savePost(post,this)
         activity.recycler_pending_post.adapter.notifyDataSetChanged()
-        activity.startActivity(Intent(activity,GosipActivity::class.java))
+        var intent = Intent(activity, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        activity.startActivity(intent)
     }
 
     override fun onSucces(dataList: ArrayList<PendingPost>) {
