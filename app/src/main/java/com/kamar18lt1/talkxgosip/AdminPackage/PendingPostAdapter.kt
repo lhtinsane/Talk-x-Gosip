@@ -26,8 +26,10 @@ class PendingPostAdapter(var activity: Activity, var dataList : ArrayList<Pendin
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.pending_post.text = dataList[position].post
         holder.status.text = dataList[position].status
+        holder.id_pos = dataList[position].idPost
         holder.itemView.layout_accept.setOnClickListener {
             adminPresenter.acceptPost(dataList[position])
+            adminPresenter.removeFromPending(dataList[position])
         }
     }
 
@@ -35,6 +37,7 @@ class PendingPostAdapter(var activity: Activity, var dataList : ArrayList<Pendin
     class ViewHolder(view :View) : RecyclerView.ViewHolder(view){
         var pending_post = view.pending_post
         var status = view.status
+        var id_pos : String? = null
     }
 
 }

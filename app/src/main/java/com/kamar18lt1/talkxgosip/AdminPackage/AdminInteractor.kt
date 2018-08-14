@@ -7,8 +7,13 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.kamar18lt1.talkxgosip.Model.PendingPost
 
 class AdminInteractor : AdminContract.AdminInteractor {
+    override fun removeFromPending(post: String, listener: AdminContract.AdminInteractor.InteractorListener) {
+        db.collection("pending_post").document(post).delete()
+        listener.onRemove()
+    }
+
     override fun savePost(post: PendingPost, listener: AdminContract.AdminInteractor.InteractorListener) {
-        db.collection("post").document().set(post).addOnCompleteListener {
+        db.collection("post").document(post.idPost).set(post).addOnCompleteListener {
             if (it.isSuccessful){
                 listener.onSavePost()
             }else
@@ -24,7 +29,7 @@ class AdminInteractor : AdminContract.AdminInteractor {
                     if (it.isSuccessful){
                         var dataList = ArrayList<PendingPost>()
                         for (document in it.result){
-                            var pendingPost = PendingPost(document["nickname"].toString(),document["post"].toString(),
+                            var pendingPost = PendingPost(document.id,document["nickname"].toString(),document["post"].toString(),
                                     document["date"] as Long,document["numLike"] as Long, document["numDislike"] as Long,
                                     document["status"].toString())
                             dataList.add(pendingPost)

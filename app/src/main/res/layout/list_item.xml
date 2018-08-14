@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/card"
-
+    card_view:cardBackgroundColor="#e0e0e0"
     android:layout_marginTop="5dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/num_like"
                     android:layout_toRightOf="@+id/like"
-                    android:layout_marginRight="4dp"
+                    android:layout_marginRight="12dp"
                     >
                         <TextView
                             android:id="@+id/num_like"
@@ -95,14 +95,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="4dp"
-                android:layout_toLeftOf="@+id/layout_numDislike"
+                android:layout_toRightOf="@id/layout_numLike"
                 android:text="@string/dislike" />
 
             <LinearLayout android:id="@+id/layout_numDislike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/num_dislike"
-                android:layout_alignParentEnd="true">
+                android:layout_toRightOf="@id/dislike"
+                >
                 <TextView
                     android:id="@+id/num_dislike"
                     android:layout_width="wrap_content"

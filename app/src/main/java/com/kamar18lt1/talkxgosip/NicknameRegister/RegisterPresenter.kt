@@ -5,8 +5,8 @@ import com.kamar18lt1.talkxgosip.FeedsGosip.GosipActivity
 import com.kamar18lt1.talkxgosip.PreferenceHelper.PreferenceHelper
 
 class RegisterPresenter(var activity: RegisterNicknameActivity) : RegisterNicknameContract.RegisterPresenterInterface, RegisterNicknameContract.RegisterInteractorInterface.OnRegisterListener, RegisterNicknameContract.RegisterInteractorInterface.OnLoadListener {
-    override fun onSuccess(string: String) {
-        preferenceHelper.setLoginUser(string)
+    override fun onSuccess(string: String,status : String) {
+        preferenceHelper.setLoginUser(string,status)
         activity.startActivity(Intent(activity,GosipActivity::class.java))
     }
 
@@ -20,8 +20,8 @@ class RegisterPresenter(var activity: RegisterNicknameActivity) : RegisterNickna
 
     val interactor = RegisterInteractor()
     var preferenceHelper = PreferenceHelper(activity)
-    override fun registerComplete(nickname :String) {
-        preferenceHelper.setLoginUser(nickname)
+    override fun registerComplete(nickname :String,status: String) {
+        preferenceHelper.setLoginUser(nickname,status)
         activity.startActivity(Intent(activity,GosipActivity::class.java))
     }
 

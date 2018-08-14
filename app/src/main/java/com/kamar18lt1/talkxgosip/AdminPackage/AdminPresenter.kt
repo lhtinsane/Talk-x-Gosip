@@ -9,6 +9,15 @@ import com.kamar18lt1.talkxgosip.Model.PendingPost
 import kotlinx.android.synthetic.main.activity_admin.*
 
 class AdminPresenter(var activity : Activity) : AdminContract.AdminPresenterInf , AdminContract.AdminInteractor.InteractorListener{
+    override fun onRemove() {
+        activity.recycler_pending_post.adapter.notifyDataSetChanged()
+    }
+
+    override fun removeFromPending(post: PendingPost) {
+        var interactor = AdminInteractor()
+        interactor.removeFromPending(post.idPost,this)
+    }
+
     override fun onSavePost() {
 
     }

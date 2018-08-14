@@ -11,11 +11,11 @@ object RegisterNicknameContract {
         fun registerNickname(string: String,id:String,listener : OnRegisterListener)
         fun loadData(id: String,listener: OnLoadListener)
         interface OnRegisterListener{
-            fun registerComplete(string: String)
+            fun registerComplete(string: String,status: String)
             fun registerFailed()
         }
         interface OnLoadListener{
-            fun onSuccess(string: String)
+            fun onSuccess(string: String,status: String)
             fun onFailed()
         }
     }

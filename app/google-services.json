@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "13739425834-seo764rq7l59kjee36k74canjhh1t876.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kamar18lt1.talkxgosip",
+            "certificate_hash": "c62165d9b9ac6ac345f76942aad68bc0f99245d9"
+          }
+        },
+        {
           "client_id": "13739425834-j686t1mtseego6b6jo1rb1k7f4ds9qjd.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -117,15 +117,16 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
     fun checkUser(string: String, listener: OnUserExistListener){
         db.collection("user").whereEqualTo("id",string).get().addOnCompleteListener {
             if (it.result.documents.size ==1){
-                listener.onExist(it.result.documents[0]["nickname"] as String)
+                listener.onExist(it.result.documents[0]["nickname"] as String,it.result.documents[0]["status"] as String)
             }else
                 listener.onNotExist()
         }
     }
 
-    override fun onExist(string: String) {
-        preferenceHelper.setLoginUser(string)
+    override fun onExist(string: String,status: String) {
+        preferenceHelper.setLoginUser(string,status)
         Log.e("kesininya dia??","wkwkwk")
+        Log.e("info User",string+" adalah "+status)
         var intent = Intent(this,GosipActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)

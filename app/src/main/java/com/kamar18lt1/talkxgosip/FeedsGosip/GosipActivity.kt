@@ -51,6 +51,10 @@ class GosipActivity : AppCompatActivity(),GosipContract.GosipViewInterface {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.logout,menu)
+        if(preferenceHelper.isUserAdmin()){
+            menu!!.findItem(R.id.pending).isVisible = true
+        }else
+            menu!!.findItem(R.id.pending).isVisible = false
         return true
     }
 
@@ -78,6 +82,9 @@ class GosipActivity : AppCompatActivity(),GosipContract.GosipViewInterface {
 
         //preference helper
         preferenceHelper = PreferenceHelper(this)
+
+        //option menu
+        invalidateOptionsMenu()
 
         button_dialog.setOnClickListener{
             showDialog()

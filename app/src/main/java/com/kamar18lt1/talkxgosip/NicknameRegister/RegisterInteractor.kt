@@ -7,7 +7,7 @@ class RegisterInteractor : RegisterNicknameContract.RegisterInteractorInterface 
     override fun loadData(id: String, listener: RegisterNicknameContract.RegisterInteractorInterface.OnLoadListener) {
         db.collection("user").whereEqualTo("id",id).get().addOnSuccessListener {
             if (it.documents.size == 1){
-                listener.onSuccess(it.documents[0]["id"].toString())
+                listener.onSuccess(it.documents[0]["id"].toString(),it.documents[0]["status"].toString())
             }
         }
                 .addOnFailureListener {
@@ -19,7 +19,7 @@ class RegisterInteractor : RegisterNicknameContract.RegisterInteractorInterface 
 
     override fun registerNickname(string: String,id:String,listener: RegisterNicknameContract.RegisterInteractorInterface.OnRegisterListener) {
         db.collection("user").document().set(User(id,string,"normal")).addOnSuccessListener {
-            listener.registerComplete(string)
+            listener.registerComplete(string,"normal")
         }
                 .addOnFailureListener {
                     listener.registerFailed()
