@@ -5,18 +5,37 @@ import android.util.Log
 
 import android.widget.Toast
 import com.kamar18lt1.talkxgosip.Model.Post
+import com.kamar18lt1.talkxgosip.Model.PostFromDB
+import com.kamar18lt1.talkxgosip.Model.User
+import com.kamar18lt1.talkxgosip.PreferenceHelper.PreferenceHelper
 import kotlinx.android.synthetic.main.activity_gosip.*
 
 class GosipPresenter(var view: GosipActivity) : GosipContract.GosipPresenterInterface,GosipContract.GosipInteractorInterface.onGosipPostListener,GosipContract.GosipInteractorInterface.onLoadPostListener{
+    override fun onLikeSucces() {
+
+    }
+
+    override fun onDislikeSucces() {
+
+    }
+
+    override fun likePostBy(idpos:String, nickname: User) {
+        interactor.likePost(idpos,nickname,this)
+    }
+
+    override fun dislikePostBy(idpos:String, nickname: User) {
+        interactor.dislikePost(idpos,nickname,this)
+    }
 
     var interactor = GosipInteractor()
 
     //interactor for loading gossip
-    override fun onLoadSucces(listPost: ArrayList<Post>): ArrayList<Post> {
+    override fun onLoadSucces(listPost: ArrayList<PostFromDB>): ArrayList<PostFromDB> {
         if (listPost.isEmpty()){
 
         }else{
             try {
+                view.refresh.isRefreshing = false
                 view.recycler_view.setHasFixedSize(true)
                 val layoutManager = LinearLayoutManager(view)
                 view.recycler_view.layoutManager = layoutManager
@@ -30,7 +49,7 @@ class GosipPresenter(var view: GosipActivity) : GosipContract.GosipPresenterInte
         return listPost
     }
 
-    fun setRecyclerView(listPost: ArrayList<Post>) {
+    fun setRecyclerView(listPost: ArrayList<PostFromDB>) {
         view.recycler_view.setHasFixedSize(true)
         view.recycler_view.layoutManager = LinearLayoutManager(view)
         view.recycler_view.adapter =GosipAdapter(view,listPost)
@@ -56,6 +75,8 @@ class GosipPresenter(var view: GosipActivity) : GosipContract.GosipPresenterInte
     }
 
     override fun postGosip(string: String) {
-        interactor.savePost(string,this)
+        var preferenceHelper = PreferenceHelper(view)
+        var pending = Post(preferenceHelper.isLogin.getString(preferenceHelper.USER_NICKNAME,null),string,0,0,0)
+        interactor.savePost(pending,this)
     }
 }

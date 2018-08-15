@@ -25,7 +25,7 @@ class PendingPostAdapter(var activity: Activity, var dataList : ArrayList<Pendin
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.pending_post.text = dataList[position].post
-        holder.status.text = dataList[position].status
+        holder.status.text = "pending"
         holder.id_pos = dataList[position].idPost
         holder.itemView.layout_accept.setOnClickListener {
             adminPresenter.acceptPost(dataList[position])

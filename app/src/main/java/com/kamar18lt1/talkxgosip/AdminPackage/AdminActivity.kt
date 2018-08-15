@@ -11,5 +11,11 @@ class AdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
         presenter.loadPendingPost()
+
+        //on refresh
+        admin_refresh.setOnRefreshListener {
+            admin_refresh.isRefreshing = true
+            presenter.loadPendingPost()
+        }
     }
 }

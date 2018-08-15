@@ -6,8 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".AdminPackage.AdminActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_pending_post"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/admin_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_pending_post"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>

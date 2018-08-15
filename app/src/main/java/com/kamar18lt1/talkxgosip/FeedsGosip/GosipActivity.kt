@@ -80,6 +80,14 @@ class GosipActivity : AppCompatActivity(),GosipContract.GosipViewInterface {
         //Google Signin
         googleInit()
 
+
+        //on Refresh
+        refresh.setOnRefreshListener {
+            refresh.isRefreshing = true
+            presenter.loadGosip()
+        }
+
+
         //preference helper
         preferenceHelper = PreferenceHelper(this)
 

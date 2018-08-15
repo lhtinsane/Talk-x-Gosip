@@ -38,6 +38,7 @@ class AdminPresenter(var activity : Activity) : AdminContract.AdminPresenterInf 
     }
 
     override fun onSucces(dataList: ArrayList<PendingPost>) {
+        activity.admin_refresh.isRefreshing = false
         activity.recycler_pending_post.setHasFixedSize(true)
         activity.recycler_pending_post.layoutManager = LinearLayoutManager(activity)
         activity.recycler_pending_post.adapter = PendingPostAdapter(activity,dataList)
